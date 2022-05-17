@@ -1,0 +1,27 @@
+Competency Question #5 temporalidad, query general de topicos.
+
+PREFIX cc: <http://www.imfd.cl/ontologia/convencion#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?fecha ?clasetopico (COUNT(?clasetopico) AS ?numtopico)
+	WHERE {
+  	?constituyente rdf:type ?person .
+  	?person cc:name ?nombre ;
+           cc:perteneceAlPacto ?pacto ;
+           cc:perteneceAlPartidoPolitico ?partido .
+  
+  	?pacto cc:nombrePacto ?nombrepacto .
+  	?partido cc:nombrePartido ?nombrepartido .
+  
+  	?constituyente cc:participaEnDiscurso ?discurso .
+  	?discurso cc:tieneTopico ?topico ;
+  			  cc:fecha ?fecha .
+  	
+    ?topicos rdf:type ?topico ,
+      			  ?clasetopico .
+
+	FILTER (?nombre = "Isabella Brunilda Mamani Mamani"
+  			&& regex(str(?clasetopico), "imfd.cl/ontologia/convencion"))
+	}
+	GROUP BY ?fecha ?clasetopico
+	ORDER BY ?fecha

@@ -1,0 +1,13 @@
+Competency Question #1: ¿Que constituyentes son menores de 30 años? 
+
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+PREFIX cc: <http://www.imfd.cl/ontologia/convencion#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?s ?age 
+	WHERE {
+	?s rdf:type cc:Constituyente .
+	?s rdf:type ?person .
+  	?person cc:age ?age .
+	FILTER (?age < "30"^^xsd:integer)
+	}

@@ -1,0 +1,16 @@
+Competency Question #3: obtener los partidos politicos participantes en las comisiones
+
+PREFIX cc: <http://www.imfd.cl/ontologia/convencion#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?nombrepartido (COUNT(?nombrepartido) AS ?numpartido)
+	WHERE {
+  	?cons cc:perteneceAComision ?comision ;
+       rdf:type ?persona .
+	?comision cc:nombreComision "MEDIO AMBIENTE, DERECHOS DE LA NATURALEZA, BIENES NATURALES COMUNES Y MODELO ECONÓMICO" .
+  
+  	?partido cc:nombrePartido ?nombrepartido .
+   	?persona cc:perteneceAlPartidoPolitico ?partido .
+  	FILTER (strlen(?nombrepartido) > strlen("xxxx"))
+	}
+	GROUP BY ?nombrepartido

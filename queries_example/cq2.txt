@@ -1,0 +1,13 @@
+Competency Question #2: ¿Que constituyentes ocupan instagram?
+
+PREFIX cc: <http://www.imfd.cl/ontologia/convencion#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?s ?insta
+	WHERE {
+	?s rdf:type cc:Constituyente .
+	?s rdf:type ?person .
+  	?person cc:tieneRedSocial ?rrss .
+	?rrss cc:instagram ?insta .
+	FILTER (str(?insta) > str(""))
+	}

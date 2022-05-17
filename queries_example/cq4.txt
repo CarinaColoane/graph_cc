@@ -1,0 +1,18 @@
+Competency Question #4 temporalidad: conocer lo que dice un constituyente
+
+PREFIX cc: <http://www.imfd.cl/ontologia/convencion#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?nombretopico ?fecha
+	WHERE {
+  	?constituyente rdf:type ?person .
+  	?person cc:name ?nombre .
+  
+  	?constituyente cc:participaEnDiscurso ?discurso .
+  	?discurso cc:tieneTopico ?topico ;
+              cc:fecha ?fecha .
+  	?topico cc:nombreTopico ?nombretopico .
+
+	FILTER (?nombre = "Isabella Brunilda Mamani Mamani")
+	}
+	ORDER BY ?nombretopico
