@@ -95,6 +95,8 @@ Lista de tópicos:  ['agua', 'derecho_social']
 ```
 
 # Final - ¿Cómo consultamos estos datos?
-Fuera del alcance de este repositorio, generamos un grafo, este grafo final nos permite relacionar estos datos con información profesional de los convencionales, por ejemplo, podemos preguntar si el constituyente “X” hablo del tema “Y”, ya que tenemos una correspondencia tipo **entidad** -> relación -> **entidad**:
+Generamos un grafo el cual nos permite relacionar estos datos con información profesional de los convencionales, por ejemplo, podemos preguntar si el constituyente “X” hablo del tema “Y”, ya que tenemos una correspondencia tipo **entidad** -> relación -> **entidad**:
 
 **Constituyente** -> participaEnDiscurso -> **Discurso** -> tieneTópico -> **Tópico**
+
+Para más detalle sobre consultas dirigirse a: [documentation/graph-querying.md](https://github.com/CarinaColoane/graph_cc/blob/main/documentation/graph-querying.md)
